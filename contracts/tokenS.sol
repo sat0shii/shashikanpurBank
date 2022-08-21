@@ -1,6 +1,6 @@
-//SPDX-License Identifier: MIT
+//SPDX-License-Identifier: MIT
 pragma solidity ^0.8.4;
-contract tokenA{
+contract tokenS{
     mapping(address => uint) public balances;
     mapping(address => mapping(address => uint))public allowances;
     uint public totalsupply;
@@ -19,9 +19,9 @@ contract tokenA{
     function allowance(address _owner, address _spender)public view returns(uint){
         return allowances[_owner][_spender];
     }
-    function mint(uint amount)public {
+    function mint(address account, uint amount)public {
         require(owner == msg.sender , "not the owner");
-        _mint(owner, amount);
+        _mint(account, amount);
     }
     function _mint(address account, uint amount)internal virtual{
         require(account != address(0), "at 0 address");
